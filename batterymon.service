@@ -1,0 +1,11 @@
+[Unit]
+Description=Battery Monitoring
+After=sshd.service
+Requires=sshd.service
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/bin/cat /dev/ttyACM0 | strings >> /var/log/lifepo4_bms_`date +%Y-%m-%d-%H.%M.%S`.log
+
+[Install]
+WantedBy=multi-user.target
