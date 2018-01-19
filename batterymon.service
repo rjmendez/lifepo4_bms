@@ -5,7 +5,5 @@ Requires=sshd.service
 
 [Service]
 TimeoutStartSec=0
-ExecStart=/bin/cat /dev/ttyACM0 | strings >> /var/log/lifepo4_bms_`date +%Y-%m-%d-%H.%M.%S`.log
+ExecStart=/bin/sh -c '/usr/local/sbin/start_battery_monitoring.sh'
 
-[Install]
-WantedBy=multi-user.target
